@@ -1,10 +1,10 @@
 package com.gmail.jpalvesl101.vuttr.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,4 +14,8 @@ public class ToolDTO {
     private String title;
     private String description;
     private String link;
+
+    @OneToMany
+    @JoinColumn(name = "toolId")
+    private List<TagDTO> tags = new ArrayList<>();
 }

@@ -31,7 +31,7 @@ public class ToolController {
     @PutMapping("/{id}")
     ResponseEntity update(@RequestBody ToolDTO toolDTO, @PathVariable("id") Long id) {
         toolDTO.setId(id);
-        return ResponseEntity.ok().body(service.create(toolDTO));
+        return ResponseEntity.ok().body(service.update(toolDTO));
     }
 
     @DeleteMapping("/{id}")
