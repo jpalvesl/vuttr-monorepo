@@ -28,6 +28,8 @@ public class ToolServiceImpl {
     }
 
     public ToolDTO update(ToolDTO toolDTO) {
+        this.repository.findById(toolDTO.getId()).orElseThrow(() -> new RuntimeException("Não foi possivel encontrar registro para podermos editar"));
+
         return repository.save(toolDTO);
     }
 

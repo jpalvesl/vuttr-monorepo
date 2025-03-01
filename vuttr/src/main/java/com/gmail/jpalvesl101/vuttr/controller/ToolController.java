@@ -5,6 +5,9 @@ import com.gmail.jpalvesl101.vuttr.service.ToolServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController("/tool")
 public class ToolController {
     private final ToolServiceImpl service;
@@ -14,22 +17,22 @@ public class ToolController {
     }
 
     @GetMapping
-    ResponseEntity findAll() {
+    ResponseEntity<List<ToolDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping("/{id}")
-    ResponseEntity findById(@PathVariable("id") Long id) {
+    ResponseEntity<Optional<ToolDTO>> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping
-    ResponseEntity create(@RequestBody ToolDTO toolDTO) {
+    ResponseEntity<ToolDTO> create(@RequestBody ToolDTO toolDTO) {
         return ResponseEntity.ok().body(service.create(toolDTO));
     }
 
     @PutMapping("/{id}")
-    ResponseEntity update(@RequestBody ToolDTO toolDTO, @PathVariable("id") Long id) {
+    ResponseEntity<ToolDTO> update(@RequestBody ToolDTO toolDTO, @PathVariable("id") Long id) {
         toolDTO.setId(id);
         return ResponseEntity.ok().body(service.update(toolDTO));
     }
