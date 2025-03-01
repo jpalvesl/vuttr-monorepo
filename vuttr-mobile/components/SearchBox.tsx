@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import instance from 'service/api';
+import api from 'service/api';
 
 function SearchBox({ text, setText, onSearch }) {
   return (
