@@ -14,8 +14,5 @@ public class ToolDTO {
     private String title;
     private String description;
     private String link;
-
-    @OneToMany
-    @JoinColumn(name = "toolId")
-    private List<TagDTO> tags = new ArrayList<>();
+    private List<String> tags = new ArrayList<>();
 }
