@@ -19,6 +19,10 @@ public class ToolServiceImpl {
         return repository.findAll();
     }
 
+    public List<ToolDTO> findByTag(String tag) {
+        return repository.findAll().stream().filter(toolDTO -> toolDTO.getTags().contains(tag)).toList();
+    }
+
     public Optional<ToolDTO> findById(Long id) {
         return repository.findById(id);
     }

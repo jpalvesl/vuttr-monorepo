@@ -19,7 +19,7 @@ function Item({ item, handleDelete }: Props) {
       </View>
 
       <View className="mb-2 flex-row flex-wrap gap-2">
-        {item.tags?.map((tag) => <Tag key={tag.id} />)}
+        {item.tags?.map((tag, idx) => <Tag key={idx} />)}
       </View>
     </View>
   );

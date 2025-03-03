@@ -2,6 +2,7 @@ package com.gmail.jpalvesl101.vuttr.controller;
 
 import com.gmail.jpalvesl101.vuttr.entity.ToolDTO;
 import com.gmail.jpalvesl101.vuttr.service.ToolServiceImpl;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,10 @@ public class ToolController {
     }
 
     @GetMapping
-    ResponseEntity<List<ToolDTO>> findAll() {
-        return ResponseEntity.ok().body(service.findAll());
+    ResponseEntity<List<ToolDTO>> findAll(@Param("tag") String tag) {
+        List<ToolDTO> registros = tag == null ? service.findAll() : service.findByTag(tag);
+
+        return ResponseEntity.ok().body(registros);
     }
 
     @GetMapping("/{id}")

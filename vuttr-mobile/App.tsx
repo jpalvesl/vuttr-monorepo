@@ -8,15 +8,18 @@ import api from 'service/api';
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [text, setText] = useState('');
+  const [text, setText] = useState('aa');
   const [lista, setLista] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [searchByTag, setSearchByTag] = useState(false);
 
   async function onSearch() {
     try {
-      const { data } = await api.get('1');
+      const params = text ? { tag: text } : null;
+
+      const { data } = await api.get('', { params });
       console.log(data);
-      setLista([data]);
+      setLista(data);
     } catch (error) {
       console.error(error);
     }
